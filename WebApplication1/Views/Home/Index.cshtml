@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    int cnt = 0;
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -55,30 +56,89 @@
 
 <br />
 
+
+
+
 <div class="container">
+
     <div class="row">
 
-        @foreach (System.Data.DataRow dr in ViewBag.dt.Rows)
-        {
+        <table>
+            <tr>
+                <td><div id="back_bn">back</div></td>
+                <td>
 
-            string video_id = dr["videoLink"].ToString().Replace("https://www.youtube.com/watch?v=", "");
-            string strTitle = dr["title"].ToString();
+                    @foreach (System.Data.DataRow dr in ViewBag.dt.Rows)
+                    {
 
-            <div class="col-sm-3">
+                        string video_id = dr["videoLink"].ToString().Replace("https://www.youtube.com/watch?v=", "");
+                        string strTitle = dr["title"].ToString();
 
-                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
-                @strTitle
-            </div>        
+                        if (cnt == 0)
+                        {
+                            <div class="col-sm-3" id="video0">
 
-        }
+                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
+                                @strTitle
+
+                            </div>
+                        }
+
+                        if (cnt == 1)
+                        {
+                            <div class="col-sm-3" id="video1">
+
+                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
+                                @strTitle
+
+                            </div>
+                        }
+
+                        if (cnt == 2)
+                        {
+                            <div class="col-sm-3" id="video2">
+
+                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
+                                @strTitle
+
+                            </div>
+                        }
+
+                        if (cnt == 3)
+                        {
+                            <div class="col-sm-3" id="video3">
+
+                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
+                                @strTitle
+
+                            </div>
+                        }
+
+
+
+                        cnt = cnt + 1;
+                    }
+
+                </td>
+                <td><div id="next_bn">next</div></td>
+            </tr>
+        </table>
+
+
 
     </div>
+
+    <br />
+    <p>Stats:</p>
+    <p>Resize the browser window to fire the <code>resize</code> event.</p>
+    <p>Window height: <span id="height"></span></p>
+    <p>Window width: <span id="width"></span></p>
+    <p>current video: <span id="current">1</span></p>
 
     <!-- Modal -->
     <div class="modal fade center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="height:200%">
-
 
                 <div class="modal-body">
 
@@ -101,6 +161,45 @@
     <script type="text/javascript">
         
         $(document).ready(function () {
+
+            reportWindowSize();
+
+            function reportWindowSize() {
+                const heightOutput = document.querySelector('#height');
+                const widthOutput = document.querySelector('#width');
+                heightOutput.textContent = window.innerHeight;
+                widthOutput.textContent = window.innerWidth;
+
+                if (window.innerWidth < 376) {
+                    //alert('375');
+                    $("#video0").hide();
+                    $("#video1").hide();
+                    $("#video2").hide();
+                    $("#video3").hide();
+                    $("#back_bn").show();
+                    $("#next_bn").show();
+                } else {
+                    $("#video0").show();
+                    $("#video1").show();
+                    $("#video2").show();
+                    $("#video3").show();
+                    $("#back_bn").hide();
+                    $("#next_bn").hide();
+                }
+
+                if ($("#current").text() == 0) {
+                    $("#video0").show();
+                } else if ($("#current").text() == 1){
+                    $("#video1").show();
+                } else if ($("#current").text() == 2){
+                    $("#video2").show();
+                } else if ($("#current").text() == 3) {
+                    $("#video3").show();
+                }
+
+            }
+
+            window.onresize = reportWindowSize;
 
             // Gets the video src from the data-src on each button
 
@@ -128,6 +227,62 @@
             })
 
             // document ready
+        });
+
+        $("#back_bn").click(function () {
+            if ($("#current").text() == 0) {
+                $("#video0").hide();
+                $("#video1").hide();
+                $("#video2").hide();
+                $("#video3").show();
+                $("#current").text('3');
+            } else if ($("#current").text() == 1) {
+                $("#video0").show();
+                $("#video1").hide();
+                $("#video2").hide();
+                $("#video3").hide();
+                $("#current").text('0');
+            } else if ($("#current").text() == 2) {
+                $("#video0").hide();
+                $("#video1").show();
+                $("#video2").hide();
+                $("#video3").hide();
+                $("#current").text('1');
+            } else if ($("#current").text() == 3) {
+                $("#video0").hide();
+                $("#video1").hide();
+                $("#video2").show();
+                $("#video3").hide();
+                $("#current").text('2');
+            }
+        });
+
+        $("#next_bn").click(function () {
+            if ($("#current").text() == 0) {
+                $("#video0").hide();
+                $("#video1").show();
+                $("#video2").hide();
+                $("#video3").hide();
+                $("#current").text('1');
+            } else if ($("#current").text() == 1) {
+                $("#video0").hide();
+                $("#video1").hide();
+                $("#video2").show();
+                $("#video3").hide();
+                $("#current").text('2');
+            } else if ($("#current").text() == 2) {
+                $("#video0").hide();
+                $("#video1").hide();
+                $("#video2").hide();
+                $("#video3").show();
+                $("#current").text('3');
+            } else if ($("#current").text() == 3) {
+                $("#video0").show();
+                $("#video1").hide();
+                $("#video2").hide();
+                $("#video3").hide();
+                $("#current").text('0');
+            }
         });
 
     </script>
