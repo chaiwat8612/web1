@@ -3,6 +3,64 @@
     int cnt = 0;
 }
 
+<style type="text/css">
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        /*width: 100%;*/ /* Full width */
+        /*height: 100%;*/ /* Full height */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #FFFFFF;
+        /*background-color: rgba(0,0,0,.0001) !important;*/
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+    }
+
+    .modal-width-pc {
+        width: 35%;
+    }
+
+    .modal-width-mb {
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -61,6 +119,7 @@
 
 <div class="container">
 
+    <!-- Start Video Section -->
     <div class="row">
 
         <table>
@@ -76,9 +135,9 @@
 
                         if (cnt == 0)
                         {
-                            <div class="col-sm-3 open-modal" id="video0">
+                            <div class="col-sm-3" id="video0">
 
-                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
+                                <input type="image" id="pic0" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-src="@video_id" onClick="video_click(this.id)" />
                                 @strTitle
 
                             </div>
@@ -86,7 +145,7 @@
 
                         if (cnt == 1)
                         {
-                            <div class="col-sm-3 open-modal" id="video1">
+                            <div class="col-sm-3" id="video1">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -96,7 +155,7 @@
 
                         if (cnt == 2)
                         {
-                            <div class="col-sm-3 open-modal" id="video2">
+                            <div class="col-sm-3" id="video2">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -106,7 +165,7 @@
 
                         if (cnt == 3)
                         {
-                            <div class="col-sm-3 open-modal" id="video3">
+                            <div class="col-sm-3" id="video3">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -127,33 +186,55 @@
 
 
     </div>
+    <!-- End Video Section -->
+
+    <!-- Trigger/Open The Modal -->
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <button id="myBtn">Open Modal</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content center" id="modal_content" style="width:35%">
+                    <span class="close">&times;</span>
+                    @*<p>Some text in the Modal..123</p>*@
+                    <p id="link_id">Video ID: Y-4KrQXH4kU (Default)</p>
+
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Y-4KrQXH4kU" id="embed_video" allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <br />
-    <p>Stats:</p>
-    <p>Resize the browser window to fire the <code>resize</code> event.</p>
-    <p>Window height: <span id="height"></span></p>
-    <p>Window width: <span id="width"></span></p>
-    <p>current video: <span id="current">1</span></p>
 
-    <!----modal starts here--->
-    <div id="modal" class="modal fade center" role='dialog'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Tutorialsplane Modal Demo</h4>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    <p>Here the description starts here........</p>
+    <!-- Start Stat Section -->
+    <div class="row">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+        <div class="col-sm-12">
+
+            <p>Stats:</p>
+            <p>Resize the browser window to fire the <code>resize</code> event.</p>
+            <p>Window height: <span id="height"></span></p>
+            <p>Window width: <span id="width"></span></p>
+            <p>current video: <span id="current">1</span></p>
+
         </div>
+
     </div>
-    <!--Modal ends here--->
+    <!-- End Stat Section -->
+
 </div>
 
     <script type="text/javascript">
@@ -168,14 +249,15 @@
                 heightOutput.textContent = window.innerHeight;
                 widthOutput.textContent = window.innerWidth;
 
-                if (window.innerWidth < 376) {
-                    //alert('375');
+                if (window.innerWidth < 400) {
+
                     $("#video0").hide();
                     $("#video1").hide();
                     $("#video2").hide();
                     $("#video3").hide();
                     $("#back_bn").show();
                     $("#next_bn").show();
+                    document.getElementById("modal_content").style.width = "80%";
                 } else {
                     $("#video0").show();
                     $("#video1").show();
@@ -183,6 +265,7 @@
                     $("#video3").show();
                     $("#back_bn").hide();
                     $("#next_bn").hide();
+                    document.getElementById("modal_content").style.width = "35%";
                 }
 
                 if ($("#current").text() == 0) {
@@ -200,6 +283,18 @@
             window.onresize = reportWindowSize;
             
         });
+
+        function video_click(clicked_id) {
+
+            var tmp = document.getElementById(clicked_id).getAttribute("data-src");
+            var text_id = "Video ID: " + tmp;
+            var text_embed = "https://www.youtube.com/embed/" + tmp;
+
+            document.getElementById("link_id").innerHTML = text_id;
+            document.getElementById("embed_video").src = text_embed;
+
+            modal.style.display = "block";
+        }
 
         $("#back_bn").click(function () {
             if ($("#current").text() == 0) {
@@ -257,11 +352,32 @@
             }
         });
 
-        $(document).on("click", ".open-modal", function () {
-            var x = new Date();
-            var myHeading = "<p>I Am Added Dynamically </p>";
-            $("#modal-body").html(myHeading + x);
-            $('#modal').modal('show');
-        });
+
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 
     </script>
