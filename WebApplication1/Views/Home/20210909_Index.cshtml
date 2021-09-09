@@ -1,4 +1,4 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Home Page";
     int cnt = 0;
 }
@@ -76,7 +76,7 @@
 
                         if (cnt == 0)
                         {
-                            <div class="col-sm-3 open-modal" id="video0">
+                            <div class="col-sm-3" id="video0">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -86,7 +86,7 @@
 
                         if (cnt == 1)
                         {
-                            <div class="col-sm-3 open-modal" id="video1">
+                            <div class="col-sm-3" id="video1">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -96,7 +96,7 @@
 
                         if (cnt == 2)
                         {
-                            <div class="col-sm-3 open-modal" id="video2">
+                            <div class="col-sm-3" id="video2">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -106,7 +106,7 @@
 
                         if (cnt == 3)
                         {
-                            <div class="col-sm-3 open-modal" id="video3">
+                            <div class="col-sm-3" id="video3">
 
                                 <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
                                 @strTitle
@@ -135,25 +135,27 @@
     <p>Window width: <span id="width"></span></p>
     <p>current video: <span id="current">1</span></p>
 
-    <!----modal starts here--->
-    <div id="modal" class="modal fade center" role='dialog'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Tutorialsplane Modal Demo</h4>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    <p>Here the description starts here........</p>
+    <!-- Modal -->
+    <div class="modal fade center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="height:200%">
+                
+                <div class="modal-body">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
         </div>
     </div>
-    <!--Modal ends here--->
 </div>
 
     <script type="text/javascript">
@@ -198,7 +200,33 @@
             }
 
             window.onresize = reportWindowSize;
-            
+
+            // Gets the video src from the data-src on each button
+
+            var $videoSrc;
+            $('.video-btn').click(function () {
+                $videoSrc = $(this).data("src");
+            });
+            console.log($videoSrc);
+
+
+
+            // when the modal is opened autoplay it
+            $('#myModal').on('shown.bs.modal', function (e) {
+
+                // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+                $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+            })
+
+
+
+            // stop playing the youtube video when I close the modal
+            $('#myModal').on('hide.bs.modal', function (e) {
+                // a poor man's stop video
+                $("#video").attr('src', $videoSrc);
+            })
+
+            // document ready
         });
 
         $("#back_bn").click(function () {
@@ -257,11 +285,4 @@
             }
         });
 
-        $(document).on("click", ".open-modal", function () {
-            var x = new Date();
-            var myHeading = "<p>I Am Added Dynamically </p>";
-            $("#modal-body").html(myHeading + x);
-            $('#modal').modal('show');
-        });
-
-    </script>
+    </script>*@
