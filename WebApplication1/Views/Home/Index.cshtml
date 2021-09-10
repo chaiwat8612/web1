@@ -26,7 +26,7 @@
         background-color: #FFFFFF;
         /*background-color: rgba(0,0,0,.0001) !important;*/
         margin: auto;
-        padding: 20px;
+        padding: 0px;
         border: 1px solid #888;
     }
 
@@ -61,7 +61,7 @@
     }
 </style>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -110,7 +110,7 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>
+</div>*@
 
 <br />
 
@@ -187,7 +187,6 @@
 
     </div>
     <!-- End Video Section -->
-
     <!-- Trigger/Open The Modal -->
     <div class="row">
 
@@ -195,23 +194,7 @@
 
             <button id="myBtn">Open Modal</button>
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
 
-                <!-- Modal content -->
-                <div class="modal-content center" id="modal_content" style="width:35%">
-                    <span class="close">&times;</span>
-                    @*<p>Some text in the Modal..123</p>*@
-                    <p id="link_id">Video ID: Y-4KrQXH4kU (Default)</p>
-
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Y-4KrQXH4kU" id="embed_video" allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
@@ -234,7 +217,23 @@
 
     </div>
     <!-- End Stat Section -->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content center" id="modal_content" style="width:60%">
+            <span class="close">&times;</span>
+            @*<p>Some text in the Modal..123</p>*@
+            @*<p id="link_id">Video ID: Y-4KrQXH4kU (Default)</p>*@
+
+            <!-- 16:9 aspect ratio -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Y-4KrQXH4kU" id="embed_video" allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
     <script type="text/javascript">
@@ -257,7 +256,7 @@
                     $("#video3").hide();
                     $("#back_bn").show();
                     $("#next_bn").show();
-                    document.getElementById("modal_content").style.width = "80%";
+                    //document.getElementById("modal_content").style.width = "80%";
                 } else {
                     $("#video0").show();
                     $("#video1").show();
@@ -265,7 +264,7 @@
                     $("#video3").show();
                     $("#back_bn").hide();
                     $("#next_bn").hide();
-                    document.getElementById("modal_content").style.width = "35%";
+                    //document.getElementById("modal_content").style.width = "35%";
                 }
 
                 if ($("#current").text() == 0) {
@@ -287,10 +286,10 @@
         function video_click(clicked_id) {
 
             var tmp = document.getElementById(clicked_id).getAttribute("data-src");
-            var text_id = "Video ID: " + tmp;
-            var text_embed = "https://www.youtube.com/embed/" + tmp;
+            //var text_id = "Video ID: " + tmp;
+            var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=1";
 
-            document.getElementById("link_id").innerHTML = text_id;
+            //document.getElementById("link_id").innerHTML = text_id;
             document.getElementById("embed_video").src = text_embed;
 
             modal.style.display = "block";
