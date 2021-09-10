@@ -12,8 +12,6 @@
         padding-top: 100px; /* Location of the box */
         left: 0;
         top: 0;
-        /*width: 100%;*/ /* Full width */
-        /*height: 100%;*/ /* Full height */
         width: 100%; /* Full width */
         height: 100%; /* Full height */
         overflow: auto; /* Enable scroll if needed */
@@ -132,46 +130,15 @@
 
                         string video_id = dr["videoLink"].ToString().Replace("https://www.youtube.com/watch?v=", "");
                         string strTitle = dr["title"].ToString();
+                        string strPicID = "pic" + cnt.ToString();
+                        string strVideoID = "video"+cnt.ToString();
 
-                        if (cnt == 0)
-                        {
-                            <div class="col-sm-3" id="video0">
+                        <div class="col-sm-3" id="@strVideoID">
 
-                                <input type="image" id="pic0" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-src="@video_id" onClick="video_click(this.id)" />
-                                @strTitle
+                            <input type="image" id="@strPicID" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-src="@video_id" onClick="video_click(this.id)" />
+                            @strTitle
 
-                            </div>
-                        }
-
-                        if (cnt == 1)
-                        {
-                            <div class="col-sm-3" id="video1">
-
-                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
-                                @strTitle
-
-                            </div>
-                        }
-
-                        if (cnt == 2)
-                        {
-                            <div class="col-sm-3" id="video2">
-
-                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
-                                @strTitle
-
-                            </div>
-                        }
-
-                        if (cnt == 3)
-                        {
-                            <div class="col-sm-3" id="video3">
-
-                                <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" data-toggle="modal" data-src="https://www.youtube.com/embed/@video_id/3YZ3KDxT2mg" data-target="#myModal" />
-                                @strTitle
-
-                            </div>
-                        }
+                        </div>
 
                         cnt = cnt + 1;
                     }
@@ -222,7 +189,7 @@
 
             <!-- 16:9 aspect ratio -->
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Y-4KrQXH4kU" id="embed_video" allowscriptaccess="always" allow="autoplay"></iframe>
+                <iframe class="embed-responsive-item" src="" id="embed_video" allowscriptaccess="always" allow="autoplay"></iframe>
             </div>
 
         </div>
@@ -356,6 +323,7 @@
 
         // When the user clicks the button, open the modal 
         btn.onclick = function () {
+            document.getElementById("embed_video").src = "https://www.youtube.com/embed/Y-4KrQXH4kU";
             modal.style.display = "block";
         }
 
