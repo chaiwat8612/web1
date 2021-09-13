@@ -129,8 +129,6 @@
         <!-- Modal content -->
         <div class="modal-content center" id="modal_content" style="width:60%">
             <span class="close">&times;</span>
-            @*<p>Some text in the Modal..123</p>*@
-            @*<p id="link_id">Video ID: Y-4KrQXH4kU (Default)</p>*@
 
             <!-- 16:9 aspect ratio -->
             <div class="embed-responsive embed-responsive-16by9">
@@ -193,7 +191,7 @@
 
         var tmp = document.getElementById(clicked_id).getAttribute("data-src");
 
-        var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=1&start=2";
+        var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
 
         document.getElementById("embed_video").src = text_embed;
 
