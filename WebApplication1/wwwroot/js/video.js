@@ -50,8 +50,32 @@ function video_click(clicked_id) {
     var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
 
     document.getElementById("embed_video").src = text_embed;
+    document.getElementById("embed_video2").src = text_embed;
+
+    reportWindowSize2();
 
     modal.style.display = "block";
+}
+
+function reportWindowSize2() {
+
+    if (window.innerWidth < 400) {
+
+        $("#close_button").hide();
+        $("#modal-item").hide();
+        $("#modal-item2").show();
+
+        //alert('mobile');
+
+    } else {
+
+        $("#modal-item2").hide();
+        $("#close_button").show();
+        $("#modal-item").show();
+
+        //alert('desktop');
+    }
+
 }
 
 $("#back_bn").click(function () {
@@ -113,6 +137,9 @@ $("#next_bn").click(function () {
 // Get the modal
 var modal = document.getElementById("myModal");
 
+// Get the modal
+var modal2 = document.getElementById("myModal");
+
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
@@ -128,6 +155,7 @@ btn.onclick = function () {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     document.getElementById("embed_video").src = "";
+    document.getElementById("embed_video2").src = "";
     modal.style.display = "none";
 }
 
@@ -135,6 +163,7 @@ span.onclick = function () {
 window.onclick = function (event) {
     if (event.target == modal) {
         document.getElementById("embed_video").src = "";
+        document.getElementById("embed_video2").src = "";
         modal.style.display = "none";
     }
 }

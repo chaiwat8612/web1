@@ -23,7 +23,7 @@
                         string video_id = dr["videoLink"].ToString().Replace("https://www.youtube.com/watch?v=", "");
                         string strTitle = dr["title"].ToString();
                         string strPicID = "pic" + cnt.ToString();
-                        string strVideoID = "video"+cnt.ToString();
+                        string strVideoID = "video" + cnt.ToString();
 
                         <div class="col-sm-3" id="@strVideoID">
 
@@ -75,11 +75,16 @@
 
         <!-- Modal content -->
         <div class="modal-content center" id="modal_content" style="width:60%">
-            <span class="close">&times;</span>
+            <span class="close" id="close_button">&times;</span>
 
             <!-- 16:9 aspect ratio -->
-            <div class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive embed-responsive-16by9" id="modal-item">
                 <iframe class="embed-responsive-item" src="" id="embed_video" allowscriptaccess="always" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+
+            <!-- mobile ratio -->
+            <div class="center" id="modal-item2">
+                <iframe class="embed-responsive-item" frameborder="0" height="500" width="300" src="" id="embed_video2" allowscriptaccess="always" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
             </div>
 
         </div>
