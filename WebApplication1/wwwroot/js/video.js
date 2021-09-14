@@ -43,16 +43,7 @@
 
 });
 
-function video_click(clicked_id) {
 
-    var tmp = document.getElementById(clicked_id).getAttribute("data-src");
-
-    var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
-
-    document.getElementById("embed_video").src = text_embed;
-
-    modal.style.display = "block";
-}
 
 $("#back_bn").click(function () {
     if ($("#current").text() == 0) {
@@ -119,6 +110,50 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        width: '100%',
+        videoId: 'BoBFFppNdIk',
+        playerVars: { 'autoplay': 1, 'playsinline': 1 },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    //event.target.mute();
+    //event.target.playVideo();
+}
+
+function video_click(clicked_id) {
+
+    //var tmp = document.getElementById(clicked_id).getAttribute("data-src");
+
+    //var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
+
+    //document.getElementById("embed_video").src = text_embed;
+
+    //var vp = videojs('player').player();
+
+    //vp.playVideo();
+
+    player.playVideo();
+
+    modal.style.display = "block";
+}
+
 // When the user clicks the button, open the modal
 btn.onclick = function () {
     document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
@@ -127,14 +162,17 @@ btn.onclick = function () {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    document.getElementById("embed_video").src = "";
+    //document.getElementById("embed_video").src = "";
+    player.stopVideo();
     modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-        document.getElementById("embed_video").src = "";
+        //document.getElementById("embed_video").src = "";
+        player.stopVideo();
         modal.style.display = "none";
     }
 }
+
