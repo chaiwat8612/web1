@@ -43,16 +43,7 @@
 
 });
 
-function video_click(clicked_id) {
 
-    var tmp = document.getElementById(clicked_id).getAttribute("data-src");
-
-    var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
-
-    document.getElementById("embed_video").src = text_embed;
-
-    modal.style.display = "block";
-}
 
 $("#back_bn").click(function () {
     if ($("#current").text() == 0) {
@@ -119,22 +110,73 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        width: '100%',
+        videoId: '',
+        playerVars: { 'autoplay': 1, 'playsinline': 1 }
+        
+    });
+}
+
+function video_click(clicked_id) {
+
+    //get videoId
+    var videoId = document.getElementById(clicked_id).getAttribute("data-src");
+
+    //onYouTubeIframeAPIReady(videoId);
+
+    //assign videoId to player
+    player.loadVideoById(videoId);
+
+    //play video
+    player.playVideo();
+
+    //show modal
+    modal.style.display = "block";
+}
+
 // When the user clicks the button, open the modal
 btn.onclick = function () {
-    document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
+    //document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    document.getElementById("embed_video").src = "";
+
+    //stop video
+    player.stopVideo();
+
+    //close modal
     modal.style.display = "none";
+
+    //clear player
+    player.loadVideoById('');
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-        document.getElementById("embed_video").src = "";
+
+        //stop video
+        player.stopVideo();
+
+        //close medal
         modal.style.display = "none";
+
+        //clear player
+        player.loadVideoById('');
     }
 }
+
