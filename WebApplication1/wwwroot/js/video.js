@@ -146,12 +146,6 @@ function video_click(clicked_id) {
     modal.style.display = "block";
 }
 
-// When the user clicks the button, open the modal
-btn.onclick = function () {
-    //document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
-    modal.style.display = "block";
-}
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
 
