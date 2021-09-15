@@ -123,56 +123,60 @@ var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         width: '100%',
-        videoId: 'BoBFFppNdIk',
-        playerVars: { 'autoplay': 1, 'playsinline': 1 },
-        events: {
-            'onReady': onPlayerReady
-        }
+        videoId: '',
+        playerVars: { 'autoplay': 1, 'playsinline': 1 }
+        
     });
-}
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-    //event.target.mute();
-    //event.target.playVideo();
 }
 
 function video_click(clicked_id) {
 
-    //var tmp = document.getElementById(clicked_id).getAttribute("data-src");
+    //get videoId
+    var videoId = document.getElementById(clicked_id).getAttribute("data-src");
 
-    //var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
+    //onYouTubeIframeAPIReady(videoId);
 
-    //document.getElementById("embed_video").src = text_embed;
+    //assign videoId to player
+    player.loadVideoById(videoId);
 
-    //var vp = videojs('player').player();
-
-    //vp.playVideo();
-
+    //play video
     player.playVideo();
 
+    //show modal
     modal.style.display = "block";
 }
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
-    document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
+    //document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    //document.getElementById("embed_video").src = "";
+
+    //stop video
     player.stopVideo();
+
+    //close modal
     modal.style.display = "none";
+
+    //clear player
+    player.loadVideoById('');
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-        //document.getElementById("embed_video").src = "";
+
+        //stop video
         player.stopVideo();
+
+        //close medal
         modal.style.display = "none";
+
+        //clear player
+        player.loadVideoById('');
     }
 }
 
