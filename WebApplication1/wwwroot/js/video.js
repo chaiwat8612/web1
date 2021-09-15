@@ -17,6 +17,9 @@
             $("#back_bn").show();
             $("#next_bn").show();
 
+            setModalForMobile();
+            
+
         } else {
             $("#video0").show();
             $("#video1").show();
@@ -25,6 +28,28 @@
             $("#back_bn").hide();
             $("#next_bn").hide();
 
+            setModalForDesktop();
+            
+        }
+
+        function setModalForDesktop() {
+
+            if ($("#modal_content").length) {
+                document.getElementById("modal_content").style.width = "60%";
+            }
+
+            $("#embed_section").addClass("embed-responsive");
+            $("#embed_section").addClass("embed-responsive-16by9");
+        }
+
+        function setModalForMobile() {
+
+            if ($("#modal_content").length) {
+                document.getElementById("modal_content").style.width = "80%";
+            }
+
+            $("#embed_section").removeClass("embed-responsive");
+            $("#embed_section").removeClass("embed-responsive-16by9");
         }
 
         if ($("#current").text() == 0) {
@@ -123,6 +148,7 @@ var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         width: '100%',
+        height: '540px',
         videoId: '',
         playerVars: { 'autoplay': 1, 'playsinline': 1 }
         
