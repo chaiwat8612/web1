@@ -25,11 +25,13 @@ function reportWindowSize() {
         if (window.innerWidth >= 800) {
 
             hideButtonControl();
+            setPaddingVideo("15px");
             showAllVideo();
 
         } else {
 
             hideAllVideo();
+            setPaddingVideo("5px");
             showButtonControl();
             showCurrentVideo();
 
@@ -38,6 +40,7 @@ function reportWindowSize() {
     } else {
 
         hideButtonControl();
+        setPaddingVideo("15px");
         showAllVideo();
 
     }
@@ -118,6 +121,30 @@ function showCurrentVideo() {
         $("#video2").show();
     } else if ($("#current").text() == 3) {
         $("#video3").show();
+    }
+
+}
+
+function setPaddingVideo(padding_value) {
+
+    if ($("#video0").length) {
+        document.getElementById("video0").style.paddingLeft = padding_value;
+        document.getElementById("video0").style.paddingRight = padding_value;
+    }
+
+    if ($("#video1").length) {
+        document.getElementById("video1").style.paddingLeft = padding_value;
+        document.getElementById("video1").style.paddingRight = padding_value;
+    }
+
+    if ($("#video2").length) {
+        document.getElementById("video2").style.paddingLeft = padding_value;
+        document.getElementById("video2").style.paddingRight = padding_value;
+    }
+
+    if ($("#video3").length) {
+        document.getElementById("video3").style.paddingLeft = padding_value;
+        document.getElementById("video3").style.paddingRight = padding_value;
     }
 
 }
