@@ -42,16 +42,6 @@
 
     </div>
     <!-- End Video Section -->
-    <!-- Trigger/Open The Modal -->
-    <div class="row">
-
-        <div class="col-sm-12">
-
-            <button id="myBtn">Open Modal</button>
-
-        </div>
-
-    </div>
 
     <br />
 
@@ -64,18 +54,19 @@
             <p>Resize the browser window to fire the <code>resize</code> event.</p>
             <p>Window height: <span id="height"></span></p>
             <p>Window width: <span id="width"></span></p>
-            <p>current video: <span id="current">1</span></p>
+            <p>current video: <span id="current">0</span></p>
 
         </div>
 
     </div>
     <!-- End Stat Section -->
+
     <!-- The Modal -->
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content center" id="modal_content" style="width:60%">
-            <span class="close">&times;</span>
+        <div class="modal-content center" id="modal_content" style="width:60%; height:auto">
+            <span class="close" id="close_button">&times;</span>
 
             <!-- 16:9 aspect ratio -->
             <div class="embed-responsive embed-responsive-16by9">
