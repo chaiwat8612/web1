@@ -17,9 +17,6 @@
             $("#back_bn").show();
             $("#next_bn").show();
 
-            setModalForMobile();
-            
-
         } else {
             $("#video0").show();
             $("#video1").show();
@@ -28,28 +25,6 @@
             $("#back_bn").hide();
             $("#next_bn").hide();
 
-            setModalForDesktop();
-            
-        }
-
-        function setModalForDesktop() {
-
-            if ($("#modal_content").length) {
-                document.getElementById("modal_content").style.width = "60%";
-            }
-
-            $("#embed_section").addClass("embed-responsive");
-            $("#embed_section").addClass("embed-responsive-16by9");
-        }
-
-        function setModalForMobile() {
-
-            if ($("#modal_content").length) {
-                document.getElementById("modal_content").style.width = "80%";
-            }
-
-            $("#embed_section").removeClass("embed-responsive");
-            $("#embed_section").removeClass("embed-responsive-16by9");
         }
 
         if ($("#current").text() == 0) {
@@ -68,7 +43,16 @@
 
 });
 
+function video_click(clicked_id) {
 
+    var tmp = document.getElementById(clicked_id).getAttribute("data-src");
+
+    var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
+
+    document.getElementById("embed_video").src = text_embed;
+
+    modal.style.display = "block";
+}
 
 $("#back_bn").click(function () {
     if ($("#current").text() == 0) {
@@ -135,68 +119,22 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        width: '100%',
-        height: '540px',
-        videoId: '',
-        playerVars: { 'autoplay': 1, 'playsinline': 1 }
-        
-    });
-}
-
-function video_click(clicked_id) {
-
-    //get videoId
-    var videoId = document.getElementById(clicked_id).getAttribute("data-src");
-
-    //onYouTubeIframeAPIReady(videoId);
-
-    //assign videoId to player
-    player.loadVideoById(videoId);
-
-    //play video
-    player.playVideo();
-
-    //show modal
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+    document.getElementById("embed_video").src = "https://www.youtube.com/embed/nvq_lvC1MRY";
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-
-    //stop video
-    player.stopVideo();
-
-    //close modal
+    document.getElementById("embed_video").src = "";
     modal.style.display = "none";
-
-    //clear player
-    player.loadVideoById('');
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-
-        //stop video
-        player.stopVideo();
-
-        //close medal
+        document.getElementById("embed_video").src = "";
         modal.style.display = "none";
-
-        //clear player
-        player.loadVideoById('');
     }
 }
-

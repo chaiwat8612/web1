@@ -3,7 +3,7 @@
     int cnt = 0;
 }
 
-<link href="~/css/video.css?v=0001" rel="stylesheet" />
+<link href="~/css/video.css" rel="stylesheet" />
 
 <br />
 
@@ -23,7 +23,7 @@
                         string video_id = dr["videoLink"].ToString().Replace("https://www.youtube.com/watch?v=", "");
                         string strTitle = dr["title"].ToString();
                         string strPicID = "pic" + cnt.ToString();
-                        string strVideoID = "video"+cnt.ToString();
+                        string strVideoID = "video" + cnt.ToString();
 
                         <div class="col-sm-3" id="@strVideoID">
 
@@ -42,6 +42,16 @@
 
     </div>
     <!-- End Video Section -->
+    <!-- Trigger/Open The Modal -->
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <button id="myBtn">Open Modal</button>
+
+        </div>
+
+    </div>
 
     <br />
 
@@ -60,19 +70,16 @@
 
     </div>
     <!-- End Stat Section -->
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content center" id="modal_content" style="width:80%; height:auto">
+        <div class="modal-content center" id="modal_content" style="width:60%">
             <span class="close">&times;</span>
 
             <!-- 16:9 aspect ratio -->
-            <div class="" id="embed_section">
-
-                <div id="player"></div>
-
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="" id="embed_video" allowscriptaccess="always" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
             </div>
 
         </div>
@@ -80,4 +87,4 @@
     </div>
 </div>
 
-<script src="~/js/video.js?ver=0001" type="text/javascript"></script>
+<script src="~/js/video.js" type="text/javascript"></script>
