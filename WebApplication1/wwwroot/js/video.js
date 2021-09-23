@@ -16,18 +16,63 @@ function reportWindowSize() {
     heightOutput.textContent = window.innerHeight;
     widthOutput.textContent = window.innerWidth;
 
-    if (window.innerWidth < 400) {
+    var device = getDeviceType();
 
-        hideAllVideo();
-        showButtonControl();
-        showCurrentVideo();
+    setDeviceStat(device);
+
+    if (device == "MOBILE") {
+
+        if (window.innerWidth >= 800) {
+
+            hideButtonControl();
+            showAllVideo();
+
+        } else {
+
+            hideAllVideo();
+            showButtonControl();
+            showCurrentVideo();
+
+        }
 
     } else {
 
-        showAllVideo();
         hideButtonControl();
+        showAllVideo();
 
     }
+
+}
+
+function getDeviceType() {
+    
+    var result = "Unknown";
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+        if (/(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/i.test(navigator.userAgent)) {
+
+            result = "TABLET";
+
+        } else {
+
+            result = "MOBILE";
+
+        }
+
+    } else {
+
+        result = "DESKTOP";
+    }    
+
+    return result;
+
+}
+
+function setDeviceStat(valDevice) {
+
+    var element = document.getElementById("device_type");
+    element.innerHTML = valDevice;
 
 }
 
