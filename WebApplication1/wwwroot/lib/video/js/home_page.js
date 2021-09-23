@@ -45,7 +45,7 @@ function reportWindowSize() {
 }
 
 function getDeviceType() {
-    
+
     var result = "Unknown";
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -63,7 +63,7 @@ function getDeviceType() {
     } else {
 
         result = "DESKTOP";
-    }    
+    }
 
     return result;
 
@@ -119,37 +119,6 @@ function showCurrentVideo() {
     } else if ($("#current").text() == 3) {
         $("#video3").show();
     }
-
-}
-
-function video_click(clicked_id) {
-
-    // get modal element
-    var modal = document.getElementById("myModal");
-
-    //get video source
-    var video_souce = document.getElementById(clicked_id).getAttribute("data-src");
-
-    //create video source
-    var text_embed = "https://www.youtube.com/embed/" + video_souce + "?autoplay=0&start=0";
-
-    //set video source
-    document.getElementById("embed_video").src = text_embed;
-
-    //show modal
-    modal.style.display = "block";
-}
-
-function closeModal() {
-
-    // get modal element
-    var modal = document.getElementById("myModal");
-
-    //clear source and stop video
-    document.getElementById("embed_video").src = "";
-
-    //close modal
-    modal.style.display = "none";
 
 }
 
