@@ -27,6 +27,7 @@ function reportWindowSize() {
             hideButtonControl();
             setPaddingVideo("15px");
             showAllVideo();
+            setModalForDesktop();
 
         } else {
 
@@ -34,6 +35,7 @@ function reportWindowSize() {
             setPaddingVideo("5px");
             showButtonControl();
             showCurrentVideo();
+            setModalForMobile();
 
         }
 
@@ -42,6 +44,7 @@ function reportWindowSize() {
         hideButtonControl();
         setPaddingVideo("15px");
         showAllVideo();
+        setModalForDesktop();
 
     }
 
@@ -148,6 +151,27 @@ function setPaddingVideo(padding_value) {
     }
 
 }
+
+function setModalForDesktop() {
+
+    if ($("#modal_content").length) {
+        document.getElementById("modal_content").style.width = "60%";
+    }
+
+    $("#load-player").addClass("embed-responsive");
+    $("#load-player").addClass("embed-responsive-16by9");
+}
+
+function setModalForMobile() {
+
+    if ($("#modal_content").length) {
+        document.getElementById("modal_content").style.width = "80%";
+    }
+
+    $("#load-player").removeClass("embed-responsive");
+    $("#load-player").removeClass("embed-responsive-16by9");
+}
+
 
 $("#back_bn").click(function () {
     if ($("#current").text() == 0) {
