@@ -3,18 +3,19 @@
     int cnt = 0;
 }
 
+<link href="~/css/homepage.css" rel="stylesheet" />
 <link href="~/css/video.css" rel="stylesheet" />
 
 <br />
 
-<div class="container">
+<div class="container homepage_color">
 
     <!-- Start Video Section -->
     <div class="row">
 
-        <table>
+        <table style="margin-left:auto; margin-right:auto;">
             <tr>
-                <td><div id="back_bn"><img src="~/images/bn2.png" height="30px" /></div></td>
+                <td><div id="back_bn"><img src="~/images/btn-back.png" height="30px" /></div></td>
                 <td>
 
                     @foreach (System.Data.DataRow dr in ViewBag.dt.Rows)
@@ -36,7 +37,7 @@
                     }
 
                 </td>
-                <td><div id="next_bn"><img src="~/images/nx2.png" height="30px" /></div></td>
+                <td><div id="next_bn"><img src="~/images/btn-next.png" height="30px" /></div></td>
             </tr>
         </table>
 
@@ -51,10 +52,11 @@
         <div class="col-sm-12">
 
             <p>Stats:</p>
-            <p>Resize the browser window to fire the <code>resize</code> event.</p>
+            <p>Resize the browser window to call <code>resize</code> event.</p>
             <p>Window height: <span id="height"></span></p>
             <p>Window width: <span id="width"></span></p>
-            <p>current video: <span id="current">0</span></p>
+            <p>Current video: <span id="current">0</span></p>
+            <p>Device type: <span id="device_type">DESKTOP</span></p>
 
         </div>
 
