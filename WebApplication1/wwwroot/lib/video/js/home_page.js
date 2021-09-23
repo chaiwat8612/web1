@@ -158,8 +158,6 @@ function setModalForDesktop() {
         document.getElementById("modal_content").style.width = "60%";
     }
 
-    $("#load-player").addClass("embed-responsive");
-    $("#load-player").addClass("embed-responsive-16by9");
 }
 
 function setModalForMobile() {
@@ -168,8 +166,6 @@ function setModalForMobile() {
         document.getElementById("modal_content").style.width = "80%";
     }
 
-    $("#load-player").removeClass("embed-responsive");
-    $("#load-player").removeClass("embed-responsive-16by9");
 }
 
 
