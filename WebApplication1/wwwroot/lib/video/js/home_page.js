@@ -28,6 +28,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
+            subStringVideo(49);
 
         } else {
 
@@ -36,15 +37,51 @@ function reportWindowSize() {
             showButtonControl();
             showCurrentVideo();
             setModalForMobile();
+            subStringVideo(80);
 
         }
 
     } else {
 
-        hideButtonControl();
-        setPaddingVideo("15px");
-        showAllVideo();
-        setModalForDesktop();
+        if (window.innerWidth >= 1280) {
+
+            hideButtonControl();
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForDesktop();
+            subStringVideo(80);
+
+        } else if (window.innerWidth >= 1024) {
+
+            hideButtonControl();
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForDesktop();
+            subStringVideo(66);
+
+        } else if (window.innerWidth >= 768) {
+
+            hideButtonControl();
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForDesktop();
+            subStringVideo(49);
+
+        } else if (window.innerWidth <= 500){
+
+            hideButtonControl();
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForDesktop();
+
+        } else {
+
+            hideButtonControl();
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForDesktop();
+
+        }
 
     }
 
@@ -168,6 +205,99 @@ function setModalForMobile() {
 
 }
 
+function subStringVideo(val_sub) {
+
+    if ($("#strTitleID0").length) {
+
+        var titleFocus = document.getElementById("strTitleID0");
+        var titleFull = titleFocus.getAttribute("data-src");
+
+        if (titleFull.length > val_sub) {
+
+            var titleSub = subStringTitle(titleFull, val_sub);
+
+            titleFocus.innerHTML = titleSub;
+
+        }
+
+    }
+
+    if ($("#strTitleID1").length) {
+
+        var titleFocus = document.getElementById("strTitleID1");
+        var titleFull = titleFocus.getAttribute("data-src");
+
+        if (titleFull.length > val_sub) {
+
+            var titleSub = subStringTitle(titleFull, val_sub);
+
+            titleFocus.innerHTML = titleSub;
+
+        }
+
+    }
+
+    if ($("#strTitleID2").length) {
+
+        var titleFocus = document.getElementById("strTitleID2");
+        var titleFull = titleFocus.getAttribute("data-src");
+
+        if (titleFull.length > val_sub) {
+
+            var titleSub = subStringTitle(titleFull, val_sub);
+
+            titleFocus.innerHTML = titleSub;
+
+        }
+
+    }
+
+    if ($("#strTitleID3").length) {
+
+        var titleFocus = document.getElementById("strTitleID3");
+        var titleFull = titleFocus.getAttribute("data-src");
+
+        if (titleFull.length > val_sub) {
+
+            var titleSub = subStringTitle(titleFull, val_sub);
+
+            titleFocus.innerHTML = titleSub;
+
+        }
+
+    }
+
+}
+
+function subStringTitle(str, val_sub) {
+
+    //first substring
+    var first_sub = str.substring(0, val_sub);
+
+    //count uppercase
+    var cnt = countUpperCase(str);
+
+    //mean
+    var mean = Math.ceil(cnt * 1.5);
+
+    //more
+    var more = mean - cnt;
+
+    //second substring
+    var val_sub2 = val_sub - more - 2;
+    var second_sub = first_sub.substring(0, val_sub2) + "...";
+
+    return second_sub;
+
+}
+
+function countUpperCase(str) {
+
+    var cnt = str.length - str.replace(/[A-Z]/g, '').length;
+
+    return cnt;
+
+}
 
 $("#back_bn").click(function () {
     if ($("#current").text() == 0) {
