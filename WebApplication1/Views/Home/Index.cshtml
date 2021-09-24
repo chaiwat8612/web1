@@ -28,8 +28,9 @@
                         string strTitle = dr["title"].ToString();
                         string strPicID = "pic" + cnt.ToString();
                         string strVideoID = "video" + cnt.ToString();
+                        string strTitleID = "strTitleID" + cnt.ToString();
 
-                        <div class="col-sm-3" id="@strVideoID" style="min-width:285px; min-height:210px; padding-left: 5px; padding-right: 5px;">
+                        <div class="col-sm-3" id="@strVideoID" style= "min-height:210px; padding-left: 5px; padding-right: 5px;">
 
                             <div id="@strPicID" data-src="@video_id" onClick="video_click(this.id)">
 
@@ -39,7 +40,7 @@
 
                             <div style="min-height:48px;">
 
-                                @strTitle
+                                <div id="@strTitleID" data-src="@strTitle">@strTitle</div>
 
                             </div>
 
