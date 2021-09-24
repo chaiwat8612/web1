@@ -15,7 +15,10 @@
 
         <table style="margin-left:auto; margin-right:auto;">
             <tr>
-                <td><div id="back_bn"><img src="~/images/btn-back.png" height="30px" /></div></td>
+                <!-- Back Button -->
+                <td><div id="back_bn"><img src="~/images/btn-back.png" height="30px" /></div><div style="min-height:48px;"></div></td>
+
+                <!-- Video List -->
                 <td>
 
                     @foreach (System.Data.DataRow dr in ViewBag.dt.Rows)
@@ -26,7 +29,7 @@
                         string strPicID = "pic" + cnt.ToString();
                         string strVideoID = "video" + cnt.ToString();
 
-                        <div class="col-sm-3" id="@strVideoID">
+                        <div class="col-sm-3" id="@strVideoID" style="min-width:285px; min-height:210px; padding-left: 5px; padding-right: 5px;">
 
                             <div id="@strPicID" data-src="@video_id" onClick="video_click(this.id)">
 
@@ -38,15 +41,17 @@
 
                                 @strTitle
 
-                            </div>                           
-                            
+                            </div>
+
                         </div>
 
                         cnt = cnt + 1;
                     }
 
                 </td>
-                <td><div id="next_bn"><img src="~/images/btn-next.png" height="30px" /></div></td>
+
+                <!-- Next Button -->
+                <td><div id="next_bn"><img src="~/images/btn-next.png" height="30px" /></div><div style="min-height:48px;"></div></td>
             </tr>
         </table>
 
