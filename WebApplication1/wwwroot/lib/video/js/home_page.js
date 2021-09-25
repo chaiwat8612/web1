@@ -19,6 +19,8 @@ function reportWindowSize() {
     heightOutput.textContent = window.innerHeight;
     widthOutput.textContent = window.innerWidth;
 
+    var valWidthMobile = (window.innerWidth - 100).toString() + "px";
+
     var device = getDeviceType();
 
     setDeviceStat(device);
@@ -33,15 +35,6 @@ function reportWindowSize() {
             setModalForDesktop();
             setTitle2Line("157.5px");
 
-        } if (window.innerWidth >= 414) {
-
-            hideAllVideo();
-            setPaddingVideo("5px");
-            showButtonControl();
-            showCurrentVideo();
-            setModalForMobile();
-            setTitle2Line("314px");
-
         } else {
 
             hideAllVideo();
@@ -49,7 +42,7 @@ function reportWindowSize() {
             showButtonControl();
             showCurrentVideo();
             setModalForMobile();
-            setTitle2Line("275px");
+            setTitle2Line(valWidthMobile);
 
         }
 
