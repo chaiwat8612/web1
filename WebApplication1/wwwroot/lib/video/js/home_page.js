@@ -4,6 +4,9 @@
 
     window.onresize = reportWindowSize;
 
+    document.getElementById("back_bn").addEventListener("click", backVideo);
+    document.getElementById("next_bn").addEventListener("click", nextVideo);
+
     document.getElementById("close_button").addEventListener("click", closeModal);
     document.getElementById("myModal").addEventListener("click", closeModal);
 
@@ -22,13 +25,13 @@ function reportWindowSize() {
 
     if (device == "MOBILE") {
 
-        if (window.innerWidth >= 800) {
+        if (window.innerWidth >= 720) {
 
             hideButtonControl();
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            subStringVideo(49);
+            setTitle2Line("157.5px");
 
         } else {
 
@@ -37,7 +40,7 @@ function reportWindowSize() {
             showButtonControl();
             showCurrentVideo();
             setModalForMobile();
-            subStringVideo(80);
+            setTitle2Line("275px");
 
         }
 
@@ -49,7 +52,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            subStringVideo(80);
+            setTitle2Line("262.5px");
 
         } else if (window.innerWidth >= 1024) {
 
@@ -57,7 +60,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            subStringVideo(66);
+            setTitle2Line("212.5px");
 
         } else if (window.innerWidth >= 768) {
 
@@ -65,23 +68,15 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            subStringVideo(49);
+            setTitle2Line("157.5px");
 
-        } else if (window.innerWidth <= 500){
-
-            hideButtonControl();
-            setPaddingVideo("15px");
-            showAllVideo();
-            setModalForDesktop();
-
-        } else {
+        } else
 
             hideButtonControl();
-            setPaddingVideo("15px");
-            showAllVideo();
-            setModalForDesktop();
-
-        }
+        setPaddingVideo("15px");
+        showAllVideo();
+        setModalForMobile();
+        setTitle2Line("275px");
 
     }
 
@@ -291,6 +286,19 @@ function subStringTitle(str, val_sub) {
 
 }
 
+function setTitle2Line(valTextWidth) {
+
+    var elementArray = document.getElementsByClassName("video-title");
+    var i = 0;
+
+    for (i = 0; i < elementArray.length; i++) {
+
+        elementArray[i].style.width = valTextWidth;
+
+    }
+
+}
+
 function countUpperCase(str) {
 
     var cnt = str.length - str.replace(/[A-Z]/g, '').length;
@@ -299,35 +307,38 @@ function countUpperCase(str) {
 
 }
 
-$("#back_bn").click(function () {
-    if ($("#current").text() == 0) {
-        $("#video0").hide();
-        $("#video1").hide();
-        $("#video2").hide();
-        $("#video3").show();
-        $("#current").text('3');
-    } else if ($("#current").text() == 1) {
-        $("#video0").show();
-        $("#video1").hide();
-        $("#video2").hide();
-        $("#video3").hide();
-        $("#current").text('0');
-    } else if ($("#current").text() == 2) {
-        $("#video0").hide();
-        $("#video1").show();
-        $("#video2").hide();
-        $("#video3").hide();
-        $("#current").text('1');
-    } else if ($("#current").text() == 3) {
-        $("#video0").hide();
-        $("#video1").hide();
-        $("#video2").show();
-        $("#video3").hide();
-        $("#current").text('2');
-    }
-});
+function backVideo() {
 
-$("#next_bn").click(function () {
+    if ($("#current").text() == 0) {
+        $("#video0").hide();
+        $("#video1").hide();
+        $("#video2").hide();
+        $("#video3").show();
+        $("#current").text('3');
+    } else if ($("#current").text() == 1) {
+        $("#video0").show();
+        $("#video1").hide();
+        $("#video2").hide();
+        $("#video3").hide();
+        $("#current").text('0');
+    } else if ($("#current").text() == 2) {
+        $("#video0").hide();
+        $("#video1").show();
+        $("#video2").hide();
+        $("#video3").hide();
+        $("#current").text('1');
+    } else if ($("#current").text() == 3) {
+        $("#video0").hide();
+        $("#video1").hide();
+        $("#video2").show();
+        $("#video3").hide();
+        $("#current").text('2');
+    }
+
+}
+
+function nextVideo() {
+
     if ($("#current").text() == 0) {
         $("#video0").hide();
         $("#video1").show();
@@ -353,4 +364,5 @@ $("#next_bn").click(function () {
         $("#video3").hide();
         $("#current").text('0');
     }
-});
+
+}
