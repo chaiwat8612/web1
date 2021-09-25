@@ -72,14 +72,14 @@ function reportWindowSize() {
             setModalForDesktop();
             setTitle2Line("157.5px");
 
-        } else
+        } else {
 
             hideButtonControl();
-        setPaddingVideo("15px");
-        showAllVideo();
-        setModalForMobile();
-        setTitle2Line("275px");
-
+            setPaddingVideo("15px");
+            showAllVideo();
+            setModalForMobile();
+            setTitle2Line("275px");
+        }
     }
 
 }
