@@ -25,13 +25,22 @@ function reportWindowSize() {
 
     if (device == "MOBILE") {
 
-        if (window.innerWidth >= 720) {
+        if (window.innerWidth >= 800) {
 
             hideButtonControl();
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
             setTitle2Line("157.5px");
+
+        } if (window.innerWidth >= 414) {
+
+            hideAllVideo();
+            setPaddingVideo("5px");
+            showButtonControl();
+            showCurrentVideo();
+            setModalForMobile();
+            setTitle2Line("314px");
 
         } else {
 
