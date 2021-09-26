@@ -31,10 +31,11 @@
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #fff;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    padding-right: 4px;
 }
 
     .close:hover,
