@@ -38,7 +38,7 @@ function appendYouTubeByID(videoID) {
 
         console.log("MOBILE");
 
-        youtube = '<iframe class="youtube-video" width="100%" height="540" style="border:none;" id="iframe_item" src="https://www.youtube.com/embed/';
+        youtube = '<iframe class="youtube-video" width="100%" height="300" style="border:none;" id="iframe_item" src="https://www.youtube.com/embed/';
 
 
         $("#load-player").removeClass("embed-responsive");
