@@ -1,13 +1,26 @@
 ﻿function video_click(clicked_id) {
 
+    if ($("#device_type").text() == "MOBILE") {
+
+        document.getElementById("load-player").style.paddingBottom = "130%";        
+
+    } else {
+
+        document.getElementById("load-player").style.paddingBottom = "56.25%";
+        
+    }
+
     // get modal element
     var modal = document.getElementById("myModal");
 
     //get video id
-    var video_id = document.getElementById(clicked_id).getAttribute("data-src");
+    var tmp = document.getElementById(clicked_id).getAttribute("data-src");
 
-    //add iframe youtube
-    appendYouTubeByID(video_id);
+    //create source
+    var text_embed = "https://www.youtube.com/embed/" + tmp + "?autoplay=0&start=0";
+
+    //set src
+    document.getElementById("embed_video").src = text_embed;
 
     //show modal
     modal.style.display = "block";
@@ -19,34 +32,11 @@ function closeModal() {
     var modal = document.getElementById("myModal");
 
     //remove iframe youtube
-    removeIframe();
+    document.getElementById("embed_video").src = "";
 
     //close modal
     modal.style.display = "none";
 
 }
 
-function appendYouTubeByID(videoID) {
-
-    //get element load-player
-    var loadSubscribe = document.getElementById("load-player");
-
-    // create iframe
-    var youtube = '<iframe class="youtube-video" id="iframe_item" src="https://www.youtube.com/embed/' + videoID + '?autoplay=0&start=0" id="embed_video" allowscriptaccess="always" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>';
-
-    // add iframe
-    loadSubscribe.innerHTML = youtube;
-}
-
-function removeIframe() {
-
-    //check exist before remove
-
-    if ($('#iframe_item').length) {
-
-        //remove iframe
-        $("#iframe_item").remove();
-    }
-
-}
 
