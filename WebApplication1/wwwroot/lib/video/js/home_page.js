@@ -33,7 +33,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            setTitle2Line("157.5px");
+            setTitle2Line("135.5px");
 
         } else {
 
@@ -54,7 +54,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            setTitle2Line("262.5px");
+            setTitle2Line("240.5px");
 
         } else if (window.innerWidth >= 1024) {
 
@@ -62,7 +62,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            setTitle2Line("212.5px");
+            setTitle2Line("190.5px");
 
         } else if (window.innerWidth >= 768) {
 
@@ -70,7 +70,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForDesktop();
-            setTitle2Line("157.5px");
+            setTitle2Line("135.5px");
 
         } else {
 
@@ -78,7 +78,7 @@ function reportWindowSize() {
             setPaddingVideo("15px");
             showAllVideo();
             setModalForMobile();
-            setTitle2Line("275px");
+            setTitle2Line("135.5px");
         }
     }
 }
