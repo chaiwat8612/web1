@@ -2,13 +2,12 @@
 
     if ($("#device_type").text() == "MOBILE") {
 
-        $("#load-player").removeClass("embed-responsive");
-        $("#load-player").removeClass("embed-responsive-16by9");
+        document.getElementById("load-player").style.paddingBottom = "130%";        
 
     } else {
 
-        $("#load-player").addClass("embed-responsive");
-        $("#load-player").addClass("embed-responsive-16by9");
+        document.getElementById("load-player").style.paddingBottom = "56.25%";
+        
     }
 
     // get modal element

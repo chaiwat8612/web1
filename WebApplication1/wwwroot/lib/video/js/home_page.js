@@ -23,7 +23,7 @@ function reportWindowSize() {
 
     var device = getDeviceType();
 
-    setDeviceStat(device);
+    setDeviceStat(device);    
 
     if (device == "MOBILE") {
 
@@ -81,7 +81,6 @@ function reportWindowSize() {
             setTitle2Line("275px");
         }
     }
-
 }
 
 function getDeviceType() {
