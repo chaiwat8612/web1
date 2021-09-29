@@ -32,17 +32,24 @@
 
                         <div class="col-sm-3" id="@strVideoID" style= "min-height:210px; padding-left: 5px; padding-right: 5px;">
 
-                            <div id="@strPicID" data-src="@video_id" onClick="video_click(this.id)">
+                            <div style="background-color: white; margin-bottom:30px; border: 1px solid #edefef">
 
-                                <input type="image"  src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" />
+                                <div id="@strPicID" data-src="@video_id" onClick="video_click(this.id)">
+
+                                    <input type="image" src="https://img.youtube.com/vi/@video_id/mqdefault.jpg" class="video-btn pic_video" />
+
+                                </div>
+
+                                <div style="min-height:70px;">
+
+                                    <div class="video-title" style="width: 262.5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;" id="@strTitleID">@strTitle</div>
+
+                                </div>
+
 
                             </div>
-
-                            <div style="min-height:48px;">
-
-                                <div class="video-title" style="width: 262.5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;" id="@strTitleID">@strTitle</div>
-
-                            </div>
+                            
+                            
 
                         </div>
 
